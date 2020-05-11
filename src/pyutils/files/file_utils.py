@@ -140,7 +140,7 @@ class FileUtils():
         return True
     '''
 
-
+    @staticmethod
     def copy_binary_file(source_path, destination_path):
         if not Path(source_path).exists():
             return False
@@ -150,7 +150,7 @@ class FileUtils():
                 f2.write(f1.read())
         return True
 
-
+    @staticmethod
     def copy_binary_file_with_buffer(source_path, destination_path, buffer):
         if not Path(source_path).exists():
             return False
@@ -169,7 +169,7 @@ class FileUtils():
                         break
         return success
 
-
+    @staticmethod
     def write_binary_file(file_path, file_content):
         if Path(file_path).exists():
             file = open(file_path, "wb")
@@ -181,7 +181,7 @@ class FileUtils():
             file.write(file_content)
             file.close()
 
-
+    @staticmethod
     def append_binary_file(file_path, file_content):
         if Path(file_path).exists():
             file = open(file_path, "ab")
@@ -193,11 +193,11 @@ class FileUtils():
             file.write(file_content)
             file.close()
 
-
+    @staticmethod
     def copy_file(source, destination):
         copyfile(source, destination)
 
-
+    @staticmethod
     def read_properties_file(path):
         prop_file = open(path, "r")
         prop_dict = dict()
@@ -218,18 +218,20 @@ class FileUtils():
         # print propDict
         return prop_dict
 
-    def list_files(self, path):
+    @staticmethod
+    def list_files(path):
         onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
         return onlyfiles
 
-    def list(self, path):
+    @staticmethod
+    def list(path):
         f = []
         for (dirpath, dirnames, filenames) in walk(path):
             f.extend(filenames)
-            print(dirnames)
             break
         return f
 
+    @staticmethod
     def find(self, path, regex, displayOnlyFiles, displayFullPath, recursionLevel):
         f = set()
         path = normalize_path(path)
@@ -270,6 +272,7 @@ class FileUtils():
                                     f.add(dirname)
         return f
 
+    @staticmethod
     def normalize_path(path):
         # path=re.sub(r'/|\\', re.escape(os.sep), path)
         # if re.compile('^(.*)'+re.escape(os.sep)+'$').match(path):
@@ -277,5 +280,6 @@ class FileUtils():
         # return path
         return re.sub(r'/|\\', re.escape(os.sep), path)
 
-    def join_path(self, directory, filename):
+    @staticmethoda
+    def join_path(directory, filename):
         return os.path.join(directory, filename)
