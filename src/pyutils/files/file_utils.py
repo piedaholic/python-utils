@@ -33,6 +33,12 @@ class FileUtils():
         if not Path(directory_path).exists():
             os.mkdir(directory_path)
 
+    @staticmethod
+    def create_text_file(file_path):
+        my_file = Path(file_path)
+        if not my_file.exists():
+            f = open(file_path, "w+")
+            f.close()
 
     def write_to_file(file_path, text):
         my_file = Path(file_path)
@@ -252,3 +258,6 @@ class FileUtils():
         #         path = re.compile('^(.*)'+re.escape(os.sep)+'$').match(path).group(1)
         # return path
         return re.sub(r'/|\\', re.escape(os.sep), path)
+
+    def join_path(self, directory, filename):
+        return os.path.join(directory, filename)
