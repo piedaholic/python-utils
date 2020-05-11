@@ -28,7 +28,7 @@ class FileUtils():
 
     #def __init__(self):
         #super(self).__init__()
-
+    @staticmethod
     def create_directory(directory_path):
         if not Path(directory_path).exists():
             os.mkdir(directory_path)
@@ -40,6 +40,7 @@ class FileUtils():
             f = open(file_path, "w+")
             f.close()
 
+    @staticmethod
     def write_to_file(file_path, text):
         my_file = Path(file_path)
         if my_file.exists():
@@ -61,17 +62,34 @@ class FileUtils():
         f.write(text)
         f.close()
 
-
+    @staticmethod
     def read_file(file_path):
         my_file = Path(file_path)
         #if my_file.exists():
+        f = None
         try:
             f = open(file_path, mode='r', encoding='utf-8')
             file_content = f.read()
+            f.close()
         except Exception:
             file_content = None
+            if f is not None:
+                f.close()
         return file_content
 
+    @staticmethod
+    def remove_file(file):
+        if os.path.exists(file):
+            os.remove(file)
+
+    @staticmethod
+    def remove_directory(dir):
+        if os.path.exists(dir):
+            os.rmdir(dir)
+
+    @staticmethod
+    def exists(file):
+        return os.path.exists(file)
 
     def read_file_line_wise(file_path):
         #my_file = Path(file_path)
