@@ -51,7 +51,7 @@ class FileUtils():
         f.write(text)
         f.close()
 
-
+    @staticmethod
     def write(file_path, text):
         my_file = Path(file_path)
         if my_file.exists():
@@ -91,6 +91,7 @@ class FileUtils():
     def exists(file):
         return os.path.exists(file)
 
+    @staticmethod
     def read_file_line_wise(file_path):
         #my_file = Path(file_path)
         lines = list()
